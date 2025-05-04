@@ -1,0 +1,89 @@
+/* Reset some default styles for consistent rendering across browsers */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Ensures padding and border are included in element's total width and height */
+}
+
+/* Base styles for the body */
+body {
+  margin: 0; /* Remove default margin */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Set a clean, modern font stack */
+  line-height: 1.6; /* Improve readability with increased line height */
+  background-color: #f5f7fa; /* Light background color for a soft look */
+  color: #333; /* Dark text color for contrast */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack children vertically */
+  min-block-size: 100vh; /* Ensure body takes at least full viewport height */
+}
+
+/* Styles for header and footer */
+header,
+footer {
+  background-color: #007bff; /* Primary color for header and footer */
+  color: #fff; /* White text for contrast */
+  padding: 1rem; /* Padding for spacing */
+  text-align: center; /* Center text alignment */
+}
+
+/* Main content area styles */
+main {
+  flex: 1; /* Allow main to grow and fill available space */
+  max-inline-size: 960px; /* Limit maximum width for better readability */
+  margin: 2rem auto; /* Center main with vertical margin */
+  padding: 0 1rem; /* Horizontal padding for content */
+}
+
+/* Heading styles */
+h1 {
+  font-weight: 700; /* Bold font weight for emphasis */
+  margin-block-end: 0.5rem; /* Space below the heading */
+}
+
+/* Paragraph styles */
+p {
+  font-size: 1.1rem; /* Slightly larger font size for readability */
+  margin-block-start: 0; /* Remove default top margin */
+}
+
+/* Button styles */
+a.button {
+  display: inline-block; /* Make the link behave like a button */
+  margin-block-start: 1.5rem; /* Space above the button */
+  padding: 0.75rem 1.5rem; /* Padding for button size */
+  background-color: #0056b3; /* Darker blue for button background */
+  color: #fff; /* White text color */
+  text-decoration: none; /* Remove underline from link */
+  border-radius: 0.3rem; /* Rounded corners for button */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  font-weight: 600; /* Semi-bold font weight */
+}
+
+/* Button hover and focus states */
+a.button:hover,
+a.button:focus {
+  background-color: #003d80; /* Darker blue on hover/focus */
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Add focus-visible style */
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 600px) {
+  main {
+    margin: 1rem; /* Reduce margin on smaller screens */
+    padding: 0 0.5rem; /* Reduce padding for better fit */
+  }
+  body {
+    font-size: 16px; /* Set a base font size for smaller screens */
+  }
+}
+
+/* Button animation */
+a.button {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+a.button:hover,
+a.button:focus {
+  transform: translateY(-2px);
+}
