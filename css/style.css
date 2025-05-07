@@ -87,3 +87,216 @@ a.button:hover,
 a.button:focus {
   transform: translateY(-2px);
 }
+
+/* Secondary navigation styles */
+.secondary-nav {
+  margin-block-end: 2rem;
+}
+
+.secondary-menu {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.secondary-menu .nav-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  transition: background-color 0.3s ease;
+}
+
+.secondary-menu .nav-link:hover,
+.secondary-menu .nav-link:focus {
+  background-color: #e0e7ff;
+  outline: none;
+}
+
+/* Content sections */
+.content-section {
+  margin-block-end: 3rem;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Cards container for game content */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.card {
+  background-color: #f0f4ff;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  inline-size: 280px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Guides list */
+.guides-list {
+  list-style: none;
+  padding: 0;
+  max-inline-size: 600px;
+  margin: 0 auto;
+}
+
+.guides-list li {
+  margin-block-end: 0.75rem;
+}
+
+.guides-list a {
+  color: #0056b3;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.guides-list a:hover,
+.guides-list a:focus {
+  color: #003d80;
+  outline: none;
+  text-decoration: underline;
+}
+
+/* Spreadsheet table */
+.spreadsheet-table {
+  inline-size: 100%;
+  max-inline-size: 600px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.spreadsheet-table th,
+.spreadsheet-table td {
+  padding: 0.75rem 1rem;
+  border-block-end: 1px solid #ddd;
+  text-align: start;
+}
+
+.spreadsheet-table th {
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+
+.spreadsheet-table tr:hover {
+  background-color: #f0f4ff;
+}
+
+/* Blog posts */
+.blog-post {
+  max-inline-size: 600px;
+  margin: 1rem auto;
+  padding: 1rem;
+  background-color: #f9faff;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post h3 {
+  margin-block-start: 0;
+}
+
+.read-more-btn {
+  background-color: #0056b3;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.read-more-btn:hover,
+.read-more-btn:focus {
+  background-color: #003d80;
+  outline: none;
+}
+
+/* Comments section */
+#comment-form {
+  max-inline-size: 600px;
+  margin: 0 auto 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+#comment-form label {
+  font-weight: 600;
+}
+
+#comment-form input,
+#comment-form textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.3rem;
+  font-family: inherit;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+#comment-form button {
+  align-self: flex-start;
+}
+
+/* Comments list */
+#comments-list {
+  max-inline-size: 600px;
+  margin: 0 auto;
+  background-color: #f0f4ff;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.comment {
+  border-block-end: 1px solid #ddd;
+  padding: 0.5rem 0;
+}
+
+.comment:last-child {
+  border-block-end: none;
+}
+
+.comment .comment-username {
+  font-weight: 700;
+  color: #0056b3;
+}
+
+.comment .comment-text {
+  margin: 0.25rem 0 0 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    inline-size: 90%;
+  }
+}

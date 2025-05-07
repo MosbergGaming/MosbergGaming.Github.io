@@ -4,7 +4,6 @@
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault(); // Prevent default anchor click behavior
-
     // Smoothly scroll to the target section
     document.querySelector(this.getAttribute("href")).scrollIntoView({
       behavior: "smooth",
@@ -41,15 +40,119 @@ if (welcomeButton) {
   });
 }
 
-// Responsive navigation toggle (for future use)
-// Uncomment and modify the following code if you add a navigation menu
-/*
-const navToggle = document.querySelector('.nav-toggle'); // Assuming you have a button for toggling navigation
-const navMenu = document.querySelector('.nav-menu'); // Assuming you have a navigation menu
-
-if (navToggle && navMenu) {
-  navToggle.addEventListener('click', function () {
-    navMenu.classList.toggle('active'); // Toggle the active class to show/hide the menu
+// Responsive navigation toggle
+const navToggle = document.createElement("button");
+navToggle.className = "nav-toggle";
+navToggle.setAttribute("aria-label", "Toggle navigation menu");
+navToggle.textContent = "☰";
+const navMenu = document.querySelector("header nav ul.nav-menu");
+if (navMenu) {
+  document.querySelector("header nav").prepend(navToggle);
+  navToggle.addEventListener("click", function () {
+    navMenu.classList.toggle("active");
+    const expanded =
+      navToggle.getAttribute("aria-expanded") === "true" || false;
+    navToggle.setAttribute("aria-expanded", !expanded);
   });
 }
-*/
+
+// Blog read more toggle
+document.querySelectorAll(".read-more-btn").forEach((button) => {
+  button.addEventListener("click", () => {
+    const fullText = button.nextElementSibling;
+    if (fullText.style.display === "none" || fullText.style.display === "") {
+      fullText.style.display = "block";
+      button.textContent = "Read Less";
+    } else {
+      fullText.style.display = "none";
+      button.textContent = "Read More";
+    }
+  });
+});
+
+// Comment form validation and dynamic display
+const commentForm = document.getElementById("comment-form");
+const commentsList = document.getElementById("comments-list");
+
+function loadComments() {
+  const savedComments = JSON.parse(localStorage.getItem("comments")) || [];
+  commentsList.innerHTML = "";
+  savedComments.forEach(({ username, comment }) => {
+    addCommentToDOM(username, comment);
+  });
+}
+
+function addCommentToDOM(username, comment) {
+  const commentDiv = document.createElement("div");
+  commentDiv.className = "comment";
+  const userSpan = document.createElement("span");
+  userSpan.className = "comment-username";
+  userSpan.textContent = username;
+  const commentP = document.createElement("p");
+  commentP.className = "comment-text";
+  commentP.textContent = comment;
+  commentDiv.appendChild(userSpan);
+  commentDiv.appendChild(commentP);
+  commentsList.appendChild(commentDiv);
+}
+
+if (commentForm) {
+  commentForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const username = commentForm.username.value.trim();
+    const comment = commentForm.comment.value.trim();
+    if (username && comment) {
+      addCommentToDOM(username, comment);
+      saveComment(username, comment);
+      commentForm.reset();
+    } else {
+      alert("Please fill in both name and comment.");
+    }
+  });
+}
+
+function saveComment(username, comment) {
+  const savedComments = JSON.parse(localStorage.getItem("comments")) || [];
+  savedComments.push({ username, comment });
+  localStorage.setItem("comments", JSON.stringify(savedComments));
+}
+
+// Load comments on page load
+loadComments();
+
+// Interactive spreadsheet sorting
+const spreadsheetTable = document.querySelector(".spreadsheet-table");
+if (spreadsheetTable) {
+  const headers = spreadsheetTable.querySelectorAll("th");
+  headers.forEach((header, index) => {
+    header.addEventListener("click", () => {
+      sortTableByColumn(spreadsheetTable, index);
+    });
+  });
+}
+
+function sortTableByColumn(table, columnIndex) {
+  const tbody = table.tBodies[0];
+  const rows = Array.from(tbody.querySelectorAll("tr"));
+  const isNumeric = !isNaN(rows[0].cells[columnIndex].textContent.trim());
+  const sortedRows = rows.sort((a, b) => {
+    const aText = a.cells[columnIndex].textContent.trim();
+    const bText = b.cells[columnIndex].textContent.trim();
+    return isNumeric
+      ? Number(aText) - Number(bText)
+      : aText.localeCompare(bText);
+  });
+  // Toggle sort direction
+  if (
+    table.dataset.sortColumn == columnIndex &&
+    table.dataset.sortDirection == "asc"
+  ) {
+    sortedRows.reverse();
+    table.dataset.sortDirection = "desc";
+  } else {
+    table.dataset.sortDirection = "asc";
+  }
+  table.dataset.sortColumn = columnIndex;
+  // Append sorted rows
+  sortedRows.forEach((row) => tbody.appendChild(row));
+}

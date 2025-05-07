@@ -54,15 +54,128 @@
     </header>
 
     <main id="main" role="main">
-      <p>
-        This is a clean and responsive starting point for MosbergGaming's
-        homepage next web project. It includes basic structure, mobile friendly
-        viewport setup, and accessible markup.
-      </p>
-      <!-- Description of the webpage's purpose -->
+      <nav aria-label="Secondary navigation" class="secondary-nav">
+        <ul
+          class="nav-menu secondary-menu"
+          style="
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 0;
+          "
+        >
+          <li><a href="#game-content" class="nav-link">Game Content</a></li>
+          <li><a href="#guides" class="nav-link">Guides</a></li>
+          <li><a href="#spreadsheets" class="nav-link">Spreadsheets</a></li>
+          <li><a href="#blogs" class="nav-link">Blogs</a></li>
+          <li><a href="#comments" class="nav-link">Comments</a></li>
+        </ul>
+      </nav>
+
+      <section id="game-content" class="content-section">
+        <h2>Game Content</h2>
+        <div class="cards-container">
+          <article class="card">
+            <h3>Game Title 1</h3>
+            <p>Exciting game description and highlights.</p>
+          </article>
+          <article class="card">
+            <h3>Game Title 2</h3>
+            <p>Another thrilling game overview.</p>
+          </article>
+          <article class="card">
+            <h3>Game Title 3</h3>
+            <p>Explore this amazing game world.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="guides" class="content-section">
+        <h2>Guides</h2>
+        <ul class="guides-list">
+          <li><a href="#">Beginner's Guide to Game Title 1</a></li>
+          <li><a href="#">Advanced Strategies for Game Title 2</a></li>
+          <li><a href="#">Tips and Tricks for Game Title 3</a></li>
+        </ul>
+      </section>
+
+      <section id="spreadsheets" class="content-section">
+        <h2>Spreadsheets</h2>
+        <p>Interactive spreadsheets coming soon!</p>
+        <table class="spreadsheet-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Gold</td>
+              <td>1000</td>
+              <td>5000</td>
+            </tr>
+            <tr>
+              <td>Silver</td>
+              <td>500</td>
+              <td>1500</td>
+            </tr>
+            <tr>
+              <td>Bronze</td>
+              <td>200</td>
+              <td>300</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="blogs" class="content-section">
+        <h2>Blogs</h2>
+        <article class="blog-post">
+          <h3>Latest Gaming News</h3>
+          <p class="blog-summary">
+            Stay updated with the latest trends and releases in the gaming
+            world.
+          </p>
+          <button class="read-more-btn">Read More</button>
+          <p class="blog-full-text" style="display: none">
+            Here is the full blog post content with detailed information and
+            insights about the gaming industry.
+          </p>
+        </article>
+        <article class="blog-post">
+          <h3>Game Reviews</h3>
+          <p class="blog-summary">
+            In-depth reviews of popular games to help you choose your next
+            adventure.
+          </p>
+          <button class="read-more-btn">Read More</button>
+          <p class="blog-full-text" style="display: none">
+            Detailed game reviews covering gameplay, graphics, and overall
+            experience.
+          </p>
+        </article>
+      </section>
+
+      <section id="comments" class="content-section">
+        <h2>Comments</h2>
+        <form id="comment-form" aria-label="Comment form">
+          <label for="username">Name:</label>
+          <input type="text" id="username" name="username" required />
+          <label for="comment">Comment:</label>
+          <textarea id="comment" name="comment" rows="4" required></textarea>
+          <button type="submit" class="button">Submit Comment</button>
+        </form>
+        <div
+          id="comments-list"
+          aria-live="polite"
+          aria-relevant="additions"
+        ></div>
+      </section>
 
       <a href="#main" class="button">Get Started</a>
-      <!-- Call to action button -->
     </main>
 
     <footer role="contentinfo">
